@@ -5,24 +5,32 @@ pipeline {
             steps {
                 echo "Building"
             }
-            post{
-                success{
-                    mail to: "lguilding@deakin.edu.au",
-                    subject: "Build status email",
-                    body: "build was successful"
+            post {
+                success {
+                    emailext (
+                        to: "lguilding@deakin.edu.au",
+                        subject: "Build Status Email",
+                        body: "Build was successful."
+                    )
+                }
+                failure {
+                    emailext (
+                        to: "lguilding@deakin.edu.au",
+                        subject: "Build Failure Notification",
+                        body: "Build failed. Please check the logs for details."
+                    )
                 }
             }
         }
-        stage("Test"){
-            steps{
+        stage('Test') {
+            steps {
                 echo "Testing ..."
             }
         }
-        stage("Deploy"){
-            steps{
+        stage('Deploy') {
+            steps {
                 echo "Deploying ..."
             }
         }
     }
 }
-
