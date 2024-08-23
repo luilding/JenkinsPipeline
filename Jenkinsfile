@@ -7,18 +7,14 @@ pipeline {
             }
             post {
                 success {
-                    emailext (
-                        to: "lguilding@deakin.edu.au",
-                        subject: "Build Status Email",
-                        body: "Build was successful."
-                    )
+                    emailext body: 'Build was successful.',
+                        subject: 'Build Status Email',
+                        to: 'lguilding@deakin.edu.au'
                 }
                 failure {
-                    emailext (
-                        to: "lguilding@deakin.edu.au",
-                        subject: "Build Failure Notification",
-                        body: "Build failed. Please check the logs for details."
-                    )
+                    emailext body: 'Build failed. Please check the logs for details.',
+                        subject: 'Build Failure Notification',
+                        to: 'lguilding@deakin.edu.au'
                 }
             }
         }
