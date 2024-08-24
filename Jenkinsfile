@@ -39,15 +39,15 @@ pipeline {
                 failure {
                     emailext attachLog: true,
                     to: "lguilding@deakin.edu.au",
-                    subject: "Security scan failure status email",
-                    body: "Security scan failed"
+                    subject: "Security scan failure",
+                    body: "The security scan failed"
                     
                 }
                 success{
                     emailext attachLog: true,
                     to: "lguilding@deakin.edu.au",
-                    subject: "Security scan success status email",
-                    body: "Security scan success"
+                    subject: "Security scan success",
+                    body: "The Security scan succeeded"
                 }
             } 
         }
